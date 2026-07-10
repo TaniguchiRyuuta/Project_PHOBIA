@@ -10,7 +10,7 @@ public class SoundLaughter : HorrorGimmicks
 
     [SerializeField]
     private AudioClip clip;
-    public override void Activate()
+    public override void Activate(GameObject trigger)
     {
         source.PlayOneShot(clip);
     }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class HorrorGimmicks : ScriptableObject,IHorrorEvent
 {
-    public abstract void Activate();
+    public abstract void Activate(GameObject trigger);
 }
 
