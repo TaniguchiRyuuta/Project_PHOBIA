@@ -6,7 +6,7 @@ namespace PJ_PHOBIA
 {
     public class VibrationEvent : EventBehaviour
     {
-        public override void OnInputTrigger(InputButton state)
+        public override void OnInputAction(InputButton state)
         {
             Debug.Log("êUìÆ");
         }
