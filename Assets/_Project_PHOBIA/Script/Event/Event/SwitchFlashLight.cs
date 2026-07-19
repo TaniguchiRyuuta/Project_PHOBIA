@@ -6,8 +6,20 @@ namespace PJ_PHOBIA
 {
     public class SwitchFlashLight : EventBehaviour
     {
-        [SerializeField] bool lightSwitch = false;
-        [SerializeField] Light _light;
+        [SerializeField] private bool lightSwitch = false;
+        [SerializeField] private Light _light;
+        [SerializeField] float intensityValue;
+        [SerializeField] private float rangeValue;
+
+        private void Start()
+        {
+            if(!_light) _light = GetComponentInChildren<Light>();
+
+            if (lightSwitch)_light.intensity = intensityValue;
+            else _light.intensity = 0f;
+
+            _light.range = rangeValue;
+        }
         public override void OnEvent()
         {
             if(lightSwitch)
@@ -19,7 +31,7 @@ namespace PJ_PHOBIA
             else
             {
                 Debug.Log("Light:On");
-                _light.intensity = 1f;
+                _light.intensity = intensityValue;
                 lightSwitch = true;
             }
         }
