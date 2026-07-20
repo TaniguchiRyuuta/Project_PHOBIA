@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 37deb9e6-113a-47cf-a178-d9b5e5897a85
+  instanceId: bbdede76-5250-4483-9c3f-4e6223eb73b1
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -980,7 +980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5076837646293287847}
-  - component: {fileID: 8457028747930454167}
+  - component: {fileID: 713104406442496773}
   m_Layer: 3
   m_Name: RightHand_FlashLight
   m_TagString: Untagged
@@ -1005,7 +1005,7 @@ Transform:
   - {fileID: 1590245615259817612}
   m_Father: {fileID: 7701339947587366129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8457028747930454167
+--- !u!114 &713104406442496773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1014,13 +1014,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8110311230946805388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee02ad1f56dfbfb45abb542ee5b098a6, type: 3}
+  m_Script: {fileID: 11500000, guid: aa102cf5cd3d9394294a0ad66b0ed775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lightSwitch: 0
   _light: {fileID: 3370073428649396917}
-  intensityValue: 0
-  rangeValue: 0
+  intensityValue: 3
+  rangeValue: 5
 --- !u!1 &8147374824876989010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,8 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407753582acb0c94da0eaef8c270cc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandActions:
-  - {fileID: 8457028747930454167}
+  rightHandActions: []
 --- !u!1 &8268303381193367278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,6 +2745,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 792.274
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bc5c68cf230dba84aadefd0dad35a1b7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 607306e4d7483504b97adc831b37a06e, type: 2}
     - target: {fileID: 919132149155446097, guid: bc5c68cf230dba84aadefd0dad35a1b7,
         type: 3}
       propertyPath: m_Name
