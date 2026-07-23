@@ -12,6 +12,7 @@ public class SoundLaughter : HorrorGimmicks
     private AudioClip clip;
     public override void Activate(GameObject trigger)
     {
+        source = trigger.GetComponentInChildren<AudioSource>();
         source.PlayOneShot(clip);
     }
 }

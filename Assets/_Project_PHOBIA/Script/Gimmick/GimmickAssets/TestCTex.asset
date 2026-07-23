@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee56eadc5be137469ba5478d8557fd5, type: 3}
+  m_Name: TestCTex
+  m_EditorClassIdentifier: 
+  hMaterial: {fileID: 2100000, guid: 7d62cbe2a927d9a4eb8f86c58e461e99, type: 2}

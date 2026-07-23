@@ -8,6 +8,12 @@ public class RatDelay : MonoBehaviour
     AudioSource source;
     [SerializeField]
     AudioClip clip2;
+
+    private void Start()
+    {
+        source = GetComponentInChildren<AudioSource>();
+    }
+
     public void CorStart()
     {
         StartCoroutine(DelayAndPlay());
