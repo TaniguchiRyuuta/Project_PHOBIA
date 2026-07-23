@@ -6,8 +6,7 @@ namespace PJ_PHOBIA
 {
     public class PlayerAction : MonoBehaviour
     {
-        private Collider interactButton;
-        [SerializeField] EventBehaviour[] rightHandActions;
+        [SerializeField] EventBehaviour handAction;
 
         private void Update()
         {
@@ -17,11 +16,6 @@ namespace PJ_PHOBIA
         {
             Debug.Log("[PlayerAction] ê⁄êG");
             ActionTriggerEvent(other,TriggerState.Enter);
-            if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
-            {
-                Debug.Log("[PlayerAction] [{gameObject.name}] InteractButtonÇ…ê⁄êG");
-                interactButton = other.GetComponent<Collider>();
-            }
         }
         private void OnTriggerStay(Collider other)
         {
@@ -31,41 +25,44 @@ namespace PJ_PHOBIA
         {
             Debug.Log("[PlayerAction] ó£íE");
             ActionTriggerEvent(other, TriggerState.Exit);
-            if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
-            {
-                Debug.Log("[PlayerAction] [{gameObject.name}] InteractButtonÇ©ÇÁó£ÇÍÇΩ");
-                interactButton = null;
-            }
         }
         private void InputAction()
         {
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                if (interactButton != null)
-                    InvokeInteractEvent(interactButton, InputButton.PrimaryIndexTrigger);
+                InvokeInteractEvent(InputButton.PrimaryIndexTrigger);
             }
             if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
             {
-                if (interactButton != null)
-                    InvokeInteractEvent(interactButton, InputButton.PrimaryHandTrigger);
+                InvokeInteractEvent(InputButton.PrimaryHandTrigger);
             }
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
-                if(rightHandActions != null)
-                    foreach (var action in rightHandActions)
-                    {
-                        action.OnEvent();
-                    }
+                InvokeInteractEvent(InputButton.SecondaryIndexTrigger);
+            }
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+            {
+                InvokeInteractEvent(InputButton.SecondaryHandTrigger);
             }
         }
-        private void InvokeInteractEvent(Collider other, InputButton input)
+        private void InvokeInteractEvent(InputButton input)
         {
             switch (input)
             {
                 case InputButton.PrimaryIndexTrigger:
-                    other.transform.GetComponent<EventBehaviour>()?.OnInputAction(input);
+                    handAction.OnInputAction(input);
                     break;
                 case InputButton.PrimaryHandTrigger:
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.SecondaryIndexTrigger: 
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.SecondaryHandTrigger: 
+                    handAction.OnInputAction(input);
+                    break;
+                default:
+                    Debug.LogWarning("[PlayerAction] [InvokeInteractEvent]ñ¢íËã`ÇÃì¸óÕÇ≈Ç∑");
                     break;
             }
         }
