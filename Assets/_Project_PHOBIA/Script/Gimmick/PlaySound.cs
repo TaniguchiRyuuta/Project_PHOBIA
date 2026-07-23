@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Gimmick<SoundFootsteps>")]
-public class SoundFootsteps : HorrorGimmicks
+[CreateAssetMenu(menuName ="Gimmick<PlayHorrorSE>")]
+public class PlaySound : HorrorGimmicks
 {
     [SerializeField]
     private AudioSource source;

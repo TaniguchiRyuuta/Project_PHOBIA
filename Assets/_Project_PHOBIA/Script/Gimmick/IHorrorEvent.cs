@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHorrorEvent
 {
-    void Activate();
+    void Activate(GameObject trigger);
 }

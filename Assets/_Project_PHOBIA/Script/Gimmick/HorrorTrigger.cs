@@ -25,7 +25,7 @@ public class HorrorTrigger : MonoBehaviour
             return;
         }
 
-        horrorGimmicks.Activate();
+        horrorGimmicks.Activate(gameObject);
 
         activated = true;
     }
