@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: bbdede76-5250-4483-9c3f-4e6223eb73b1
+  instanceId: 39f68595-d7aa-4c5c-98f4-2031fa0fef82
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -1019,8 +1019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightSwitch: 0
   _light: {fileID: 3370073428649396917}
-  intensityValue: 3
-  rangeValue: 5
+  intensityValue: 5
+  rangeValue: 8
 --- !u!1 &8147374824876989010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1034,7 @@ GameObject:
   - component: {fileID: 8617551113177242265}
   - component: {fileID: 6052346240633068234}
   - component: {fileID: 1751845953286109278}
+  - component: {fileID: 4526027464258782929}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1076,13 +1077,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.7
+  m_Height: 1.6
   m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!82 &8617551113177242265
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1210,7 +1211,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407753582acb0c94da0eaef8c270cc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandActions: []
+  handAction: {fileID: 4526027464258782929}
+--- !u!114 &4526027464258782929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147374824876989010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688ff654cc085cd4eb82cd5f106f0a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryIndexTriggerActions:
+  - {fileID: 1597368798533128980}
+  primaryHandTriggerActions:
+  - {fileID: 1597368798533128980}
+  secondaryIndexTriggerActions:
+  - {fileID: 713104406442496773}
+  secondaryHandTriggerActions: []
+  onlyOnce: 0
 --- !u!1 &8268303381193367278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1391,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9018170103182535194}
   - component: {fileID: 2361217019905730171}
+  - component: {fileID: 5187056524892554041}
+  - component: {fileID: 1597368798533128980}
   m_Layer: 6
   m_Name: LeftHandCollider
   m_TagString: Player
@@ -1413,6 +1436,45 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5187056524892554041
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8665310819595638295}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1597368798533128980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8665310819595638295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f784abfdca7db404dbdd7e9ec6f22058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4313950593633028350
 PrefabInstance:
   m_ObjectHideFlags: 0

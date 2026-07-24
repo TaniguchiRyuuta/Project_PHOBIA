@@ -10,6 +10,8 @@ namespace PJ_PHOBIA
     {
         [SerializeField, Header("à⁄ìÆë¨ìx")]
         private float speed = 1.5f;
+        private float gravity = -9.81f;
+        private float verticalVelocity;
 
         [Header("ÉJÉÅÉââÒì]ê›íË")]
         [SerializeField] private float snapAngle = 45f;       // 1âÒÇÃâÒì]äpìx
@@ -26,12 +28,12 @@ namespace PJ_PHOBIA
         private AudioClip currentClip;
 
         private bool isTurning = false; // òAë±ì¸óÕñhé~ÉtÉâÉO
-        private CharacterController characterController;
+        private CharacterController controller;
 
 
         void Start()
         {
-            characterController = GetComponent<CharacterController>();
+            controller = GetComponent<CharacterController>();
 
             audioSource = GetComponent<AudioSource>();
             audioSource.loop = true;
@@ -52,9 +54,16 @@ namespace PJ_PHOBIA
 
             Vector3 forward = new Vector3(headTransform.forward.x, 0f, headTransform.forward.z).normalized;
             Vector3 right = new Vector3(headTransform.right.x, 0f, headTransform.right.z).normalized;
-            Vector3 moveDirection = forward * stick.y + right * stick.x;
 
-            characterController.Move(moveDirection * Time.deltaTime);
+            if (controller.isGrounded && verticalVelocity == 0)
+                verticalVelocity = -2f;
+
+            verticalVelocity += gravity * Time.deltaTime;
+
+            Vector3 moveDirection = forward * stick.y + right * stick.x;
+            moveDirection.y = verticalVelocity;
+
+            controller.Move(moveDirection * speed * Time.deltaTime);
         }
 
         void HandleFootsteps()
