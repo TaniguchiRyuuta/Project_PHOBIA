@@ -18,34 +18,47 @@ namespace PJ_PHOBIA
             {
                 case InputButton.PrimaryIndexTrigger:
                     Debug.Log("[inputActionEvent] PrimaryIndexTrigger");
+                    Debug.Log("[inputActionEvent] "+primaryIndexTriggerActions.Length);
                     if (primaryIndexTriggerActions != null && primaryIndexTriggerActions.Length > 0)
                         foreach (var action in primaryIndexTriggerActions)
+                        {
                             if (action)
                                 action.OnEvent();
-                    if(onlyOnce)col.enabled = false;
+                            action?.OnInputAction(state);
+                        }
+                    if (onlyOnce)col.enabled = false;
                     break;
                 case InputButton.PrimaryHandTrigger:
                     Debug.Log("[inputActionEvent] PrimaryHandTrigger");
                     if (primaryHandTriggerActions != null && primaryHandTriggerActions.Length > 0)
                         foreach (var action in primaryHandTriggerActions)
+                        {
                             if (action)
                                 action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
                     if (onlyOnce) col.enabled = false;
                     break ;
                 case InputButton.SecondaryIndexTrigger:
                     Debug.Log("[inputActionEvent] SecondaryIndexTrigger");
                     if (secondaryIndexTriggerActions != null && secondaryIndexTriggerActions.Length > 0)
                         foreach (var action in secondaryIndexTriggerActions)
+                        {
                             if (action)
                                 action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
                     if (onlyOnce) col.enabled = false;
                     break ;
                 case InputButton.SecondaryHandTrigger:
                     Debug.Log("[inputActionEvent] SecondaryHandTrigger");
                     if (secondaryHandTriggerActions != null && secondaryHandTriggerActions.Length > 0)
                         foreach (var action in secondaryHandTriggerActions)
+                        {
                             if (action)
                                 action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
                     if (onlyOnce) col.enabled = false;
                     break;
                 default:

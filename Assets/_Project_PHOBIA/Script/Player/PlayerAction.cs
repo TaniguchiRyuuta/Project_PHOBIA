@@ -70,7 +70,6 @@ namespace PJ_PHOBIA
         private void ActionTriggerEvent(Collider other , TriggerState state)
         {
             if(other.gameObject.layer == LayerMask.NameToLayer("Player")) return;
-
             switch(state)
             {
                 case TriggerState.Enter:
