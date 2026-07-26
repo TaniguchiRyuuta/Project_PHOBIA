@@ -21,8 +21,8 @@ public class RatDelay : MonoBehaviour
 
     private IEnumerator DelayAndPlay()
     {
-        yield return new WaitForSeconds(2);
-        source.PlayOneShot(clip2);
+        yield return new WaitForSeconds(2);　//2秒待つ
+        source.PlayOneShot(clip2);　　　　　 //2秒後にならす
         yield break;
     }
 }

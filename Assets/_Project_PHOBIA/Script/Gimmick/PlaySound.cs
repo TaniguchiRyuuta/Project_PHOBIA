@@ -12,7 +12,8 @@ public class PlaySound : HorrorGimmicks
     private AudioClip clip;
     public override void Activate(GameObject trigger)
     {
-        source = trigger.GetComponentInChildren<AudioSource>();
+        //q‚ÌAudioSource‚ğæ“¾‚µ‚Ä–Â‚ç‚·
+        source = trigger.GetComponentInChildren<AudioSource>();@
         source.PlayOneShot(clip);
     }
 }
