@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HorrorTrigger : MonoBehaviour
@@ -14,18 +13,19 @@ public class HorrorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        //activatedフラグtureの場合return(onceのtrueをInspectorで切っておけば何回でもならせる
         if(onece && activated)
         {
             return;
         }
 
-        if (!other.CompareTag("Player"))
+        //tagがPlayerじゃなかったらreturn
+        if (!other.CompareTag("Player")) 
         {
             return;
         }
 
-        horrorGimmicks.Activate(gameObject);
+        horrorGimmicks.Activate(gameObject); //ギミック発動
 
         activated = true;
     }
