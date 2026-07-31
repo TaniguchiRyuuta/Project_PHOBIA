@@ -17,14 +17,22 @@ public class FlashingL : MonoBehaviour
         //intervalTimeの間隔で、5回点滅させる
         playerLight.enabled = false;
         yield return new WaitForSeconds(intervalTime);
-        playerLight.enabled = true;
+        playerLight.enabled = true;                   //1回目
         yield return new WaitForSeconds(intervalTime);
         playerLight.enabled = false;
         yield return new WaitForSeconds(intervalTime);
-        playerLight.enabled = true;
+        playerLight.enabled = true;　　　　　　　　　 //2回目
         yield return new WaitForSeconds(intervalTime);
         playerLight.enabled = false;
         yield return new WaitForSeconds(intervalTime);
-        playerLight.enabled = true;
+        playerLight.enabled = true;                   //3回目
+        yield return new WaitForSeconds(intervalTime);
+        playerLight.enabled = false;
+        yield return new WaitForSeconds(intervalTime);
+        playerLight.enabled = true;　　　　　　       //4回目
+        yield return new WaitForSeconds(intervalTime);
+        playerLight.enabled = false;
+        yield return new WaitForSeconds(intervalTime);
+        playerLight.enabled = true;                   //5回目
     }
 }
