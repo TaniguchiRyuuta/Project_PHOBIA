@@ -44,6 +44,22 @@ namespace PJ_PHOBIA
             {
                 InvokeInteractEvent(InputButton.SecondaryHandTrigger);
             }
+            if (OVRInput.GetDown(OVRInput.RawButton.A))
+            {
+                InvokeInteractEvent(InputButton.A);
+            }
+            if (OVRInput.GetDown(OVRInput.RawButton.B))
+            {
+                InvokeInteractEvent(InputButton.B);
+            }
+            if (OVRInput.GetDown(OVRInput.RawButton.X))
+            {
+                InvokeInteractEvent(InputButton.X);
+            }
+            if (OVRInput.GetDown(OVRInput.RawButton.Y))
+            {
+                InvokeInteractEvent(InputButton.Y);
+            }
         }
         private void InvokeInteractEvent(InputButton input)
         {
@@ -59,6 +75,18 @@ namespace PJ_PHOBIA
                     handAction.OnInputAction(input);
                     break;
                 case InputButton.SecondaryHandTrigger: 
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.A:
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.B:
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.X:
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.Y:
                     handAction.OnInputAction(input);
                     break;
                 default:
@@ -91,6 +119,10 @@ namespace PJ_PHOBIA
         PrimaryHandTrigger,
         SecondaryIndexTrigger,
         SecondaryHandTrigger,
+        A,
+        B,
+        X,
+        Y,
     }
     public enum TriggerState
     {
