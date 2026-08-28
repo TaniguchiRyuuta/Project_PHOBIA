@@ -6,14 +6,14 @@ using UnityEngine;
 public class PlaySound : HorrorGimmicks
 {
     [SerializeField]
-    private AudioSource source;
+    private AudioSource _source;
 
     [SerializeField]
-    private AudioClip clip;
+    private AudioClip _clip;
     public override void Activate(GameObject trigger)
     {
-        //子のAudioSourceを取得して鳴らす
-        source = trigger.GetComponentInChildren<AudioSource>();　
-        source.PlayOneShot(clip);
+        //子のAudio_sourceを取得して鳴らす
+        _source = trigger.GetComponentInChildren<AudioSource>();　
+        _source.PlayOneShot(_clip);
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName ="Gimmick<ChangeTexture>")]
 public class ChangeTexture : HorrorGimmicks
 {
-    [SerializeField] Material hMaterial;
+    [SerializeField] Material _hMaterial;
     public override void Activate(GameObject trigger)
     {
-        trigger.GetComponentInParent<MeshRenderer>().material = hMaterial;
+        trigger.GetComponentInParent<MeshRenderer>().material = _hMaterial;
     }
 }
