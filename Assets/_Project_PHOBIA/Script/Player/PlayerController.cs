@@ -30,6 +30,8 @@ namespace PJ_PHOBIA
         private bool isTurning = false; // 連続入力防止フラグ
         private CharacterController controller;
 
+        [SerializeField] public bool _isGameStart;  //ゲームスタートしたかどうかフラグ
+        [SerializeField] public bool _isFinishTutorial;   //ターンチュートリアル実行後にtrue
 
         void Start()
         {
@@ -39,13 +41,22 @@ namespace PJ_PHOBIA
             audioSource.loop = true;
             audioSource.playOnAwake = false;
             audioSource.volume = footstepVolume;
+            _isGameStart = false;
+            _isFinishTutorial = false;
         }
 
         private void Update()
         {
-            Move();
-            HandleFootsteps();
-            SnapTurn();
+            if (_isGameStart)
+            {
+                Move();
+                HandleFootsteps();
+            }
+
+            if (_isFinishTutorial)
+            {
+                SnapTurn();
+            }
         }
 
         void Move()
