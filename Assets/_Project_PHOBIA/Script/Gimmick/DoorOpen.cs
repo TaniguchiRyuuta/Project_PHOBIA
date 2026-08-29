@@ -6,13 +6,13 @@ using UnityEngine;
 public class DoorOpen : HorrorGimmicks
 {
     [SerializeField]
-    private AudioSource source;
+    private AudioSource _source;
 
     [SerializeField]
-    private AudioClip clip;
+    private AudioClip _clip;
     public override void Activate(GameObject trigger)
     {
-        source = trigger.GetComponentInChildren<AudioSource>();
-        source.PlayOneShot(clip);
+        _source = trigger.GetComponentInChildren<AudioSource>();
+        _source.PlayOneShot(_clip);
     }
 }

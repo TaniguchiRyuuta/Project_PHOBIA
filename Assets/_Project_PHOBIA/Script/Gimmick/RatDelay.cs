@@ -5,13 +5,13 @@ using UnityEngine;
 public class RatDelay : MonoBehaviour
 {
     [SerializeField]
-    AudioSource source;
+    AudioSource _source;
     [SerializeField]
-    AudioClip clip2;
+    AudioClip _clip2;
 
     private void Start()
     {
-        source = GetComponentInChildren<AudioSource>();
+        _source = GetComponentInChildren<AudioSource>();
     }
 
     public void CorStart()
@@ -22,7 +22,7 @@ public class RatDelay : MonoBehaviour
     private IEnumerator DelayAndPlay()
     {
         yield return new WaitForSeconds(2);　//2秒待つ
-        source.PlayOneShot(clip2);　　　　　 //2秒後にならす
+        _source.PlayOneShot(_clip2);　　　　　 //2秒後にならす
         yield break;
     }
 }
