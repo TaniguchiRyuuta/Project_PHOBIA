@@ -25,7 +25,7 @@ namespace PJ_PHOBIA
         {
             switch (state)
             {
-                case InputButton.PrimaryIndexTrigger:
+                case InputButton.PrimaryIndexTriggerDown:
                     Debug.Log("[inputActionEvent] PrimaryIndexTrigger");
                     Debug.Log("[inputActionEvent] "+primaryIndexTriggerActions.Length);
                     if (primaryIndexTriggerActions != null && primaryIndexTriggerActions.Length > 0)
@@ -37,7 +37,7 @@ namespace PJ_PHOBIA
                         }
                     if (onlyOnce)col.enabled = false;
                     break;
-                case InputButton.PrimaryHandTrigger:
+                case InputButton.PrimaryHandTriggerDown:
                     Debug.Log("[inputActionEvent] PrimaryHandTrigger");
                     if (primaryHandTriggerActions != null && primaryHandTriggerActions.Length > 0)
                         foreach (var action in primaryHandTriggerActions)
@@ -48,7 +48,7 @@ namespace PJ_PHOBIA
                         }
                     if (onlyOnce) col.enabled = false;
                     break ;
-                case InputButton.SecondaryIndexTrigger:
+                case InputButton.SecondaryIndexTriggerDown:
                     Debug.Log("[inputActionEvent] SecondaryIndexTrigger");
                     if (secondaryIndexTriggerActions != null && secondaryIndexTriggerActions.Length > 0)
                         foreach (var action in secondaryIndexTriggerActions)
@@ -59,7 +59,7 @@ namespace PJ_PHOBIA
                         }
                     if (onlyOnce) col.enabled = false;
                     break ;
-                case InputButton.SecondaryHandTrigger:
+                case InputButton.SecondaryHandTriggerDown:
                     Debug.Log("[inputActionEvent] SecondaryHandTrigger");
                     if (secondaryHandTriggerActions != null && secondaryHandTriggerActions.Length > 0)
                         foreach (var action in secondaryHandTriggerActions)

@@ -18,8 +18,8 @@ namespace PJ_PHOBIA
         }
         public override void OnInputAction(InputButton state)
         {
-            if (InputButton.PrimaryIndexTrigger != state ||
-                InputButton.PrimaryHandTrigger!=state) return;
+            if (InputButton.PrimaryIndexTriggerDown != state ||
+                InputButton.PrimaryHandTriggerDown != state) return;
             player.Play(Controller.Left);
         }
 
