@@ -32,6 +32,7 @@ namespace PJ_PHOBIA
 
         [SerializeField] public bool _isGameStart;  //ゲームスタートしたかどうかフラグ
         [SerializeField] public bool _isFinishTutorial;   //ターンチュートリアル実行後にtrue
+        [SerializeField] private bool isDebug = false; //デバッグモード
 
         void Start()
         {
@@ -41,8 +42,17 @@ namespace PJ_PHOBIA
             audioSource.loop = true;
             audioSource.playOnAwake = false;
             audioSource.volume = footstepVolume;
-            _isGameStart = false;
-            _isFinishTutorial = false;
+
+            if(isDebug)
+            {
+                _isGameStart = true;
+                _isFinishTutorial = true;
+            }
+            else
+            {
+                _isGameStart = false;
+                _isFinishTutorial = false;
+            }
         }
 
         private void Update()

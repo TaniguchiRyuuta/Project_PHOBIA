@@ -30,19 +30,35 @@ namespace PJ_PHOBIA
         {
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                InvokeInteractEvent(InputButton.PrimaryIndexTrigger);
+                InvokeInteractEvent(InputButton.PrimaryIndexTriggerDown);
+            }
+            if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
+            {
+                InvokeInteractEvent(InputButton.PrimaryIndexTriggerUp);
             }
             if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
             {
-                InvokeInteractEvent(InputButton.PrimaryHandTrigger);
+                InvokeInteractEvent(InputButton.PrimaryHandTriggerDown);
+            }
+            if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
+            {
+                InvokeInteractEvent(InputButton.PrimaryHandTriggerUp);
             }
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
-                InvokeInteractEvent(InputButton.SecondaryIndexTrigger);
+                InvokeInteractEvent(InputButton.SecondaryIndexTriggerDown);
+            }
+            if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
+            {
+                InvokeInteractEvent(InputButton.SecondaryIndexTriggerUp);
             }
             if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
             {
-                InvokeInteractEvent(InputButton.SecondaryHandTrigger);
+                InvokeInteractEvent(InputButton.SecondaryHandTriggerDown);
+            }
+            if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
+            {
+                InvokeInteractEvent(InputButton.SecondaryHandTriggerUp);
             }
             if (OVRInput.GetDown(OVRInput.RawButton.A))
             {
@@ -65,16 +81,28 @@ namespace PJ_PHOBIA
         {
             switch (input)
             {
-                case InputButton.PrimaryIndexTrigger:
+                case InputButton.PrimaryIndexTriggerDown:
                     handAction.OnInputAction(input);
                     break;
-                case InputButton.PrimaryHandTrigger:
+                case InputButton.PrimaryIndexTriggerUp:
                     handAction.OnInputAction(input);
                     break;
-                case InputButton.SecondaryIndexTrigger: 
+                case InputButton.PrimaryHandTriggerDown:
                     handAction.OnInputAction(input);
                     break;
-                case InputButton.SecondaryHandTrigger: 
+                case InputButton.PrimaryHandTriggerUp:
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.SecondaryIndexTriggerDown: 
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.SecondaryIndexTriggerUp:
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.SecondaryHandTriggerDown: 
+                    handAction.OnInputAction(input);
+                    break;
+                case InputButton.SecondaryHandTriggerUp:
                     handAction.OnInputAction(input);
                     break;
                 case InputButton.A:
@@ -115,10 +143,14 @@ namespace PJ_PHOBIA
     }
     public enum InputButton
     {
-        PrimaryIndexTrigger,
-        PrimaryHandTrigger,
-        SecondaryIndexTrigger,
-        SecondaryHandTrigger,
+        PrimaryIndexTriggerDown,
+        PrimaryIndexTriggerUp,
+        PrimaryHandTriggerDown,
+        PrimaryHandTriggerUp,
+        SecondaryIndexTriggerDown,
+        SecondaryIndexTriggerUp,
+        SecondaryHandTriggerDown,
+        SecondaryHandTriggerUp,
         A,
         B,
         X,

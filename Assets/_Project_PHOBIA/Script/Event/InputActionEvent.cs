@@ -6,10 +6,14 @@ namespace PJ_PHOBIA
 {
     public class InputActionEvent : EventBehaviour
     {
-        [SerializeField] private EventBehaviour[] primaryIndexTriggerActions;
-        [SerializeField] private EventBehaviour[] primaryHandTriggerActions;
-        [SerializeField] private EventBehaviour[] secondaryIndexTriggerActions;
-        [SerializeField] private EventBehaviour[] secondaryHandTriggerActions;
+        [SerializeField] private EventBehaviour[] primaryIndexTriggerDownActions;
+        [SerializeField] private EventBehaviour[] primaryIndexTriggerUpActions;
+        [SerializeField] private EventBehaviour[] primaryHandTriggerDownActions;
+        [SerializeField] private EventBehaviour[] primaryHandTriggerUpActions;
+        [SerializeField] private EventBehaviour[] secondaryIndexTriggerDownActions;
+        [SerializeField] private EventBehaviour[] secondaryIndexTriggerUpActions;
+        [SerializeField] private EventBehaviour[] secondaryHandTriggerDownActions;
+        [SerializeField] private EventBehaviour[] secondaryHandTriggerUpActions;
         [SerializeField] private EventBehaviour[] aButtonActions;
         [SerializeField] private EventBehaviour[] bButtonActions;
         [SerializeField] private EventBehaviour[] xButtonActions;
@@ -25,11 +29,10 @@ namespace PJ_PHOBIA
         {
             switch (state)
             {
-                case InputButton.PrimaryIndexTrigger:
-                    Debug.Log("[inputActionEvent] PrimaryIndexTrigger");
-                    Debug.Log("[inputActionEvent] "+primaryIndexTriggerActions.Length);
-                    if (primaryIndexTriggerActions != null && primaryIndexTriggerActions.Length > 0)
-                        foreach (var action in primaryIndexTriggerActions)
+                case InputButton.PrimaryIndexTriggerDown:
+                    Debug.Log("[inputActionEvent] PrimaryIndexTriggerDown");
+                    if (primaryIndexTriggerDownActions != null && primaryIndexTriggerDownActions.Length > 0)
+                        foreach (var action in primaryIndexTriggerDownActions)
                         {
                             if (action)
                                 action.OnEvent();
@@ -37,10 +40,21 @@ namespace PJ_PHOBIA
                         }
                     if (onlyOnce)col.enabled = false;
                     break;
-                case InputButton.PrimaryHandTrigger:
-                    Debug.Log("[inputActionEvent] PrimaryHandTrigger");
-                    if (primaryHandTriggerActions != null && primaryHandTriggerActions.Length > 0)
-                        foreach (var action in primaryHandTriggerActions)
+                case InputButton.PrimaryIndexTriggerUp:
+                    Debug.Log("[inputActionEvent] PrimaryIndexTriggerUp");
+                    if (primaryIndexTriggerUpActions != null && primaryIndexTriggerUpActions.Length > 0)
+                        foreach (var action in primaryIndexTriggerUpActions)
+                        {
+                            if (action)
+                                action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
+                    if (onlyOnce) col.enabled = false;
+                    break;
+                case InputButton.PrimaryHandTriggerDown:
+                    Debug.Log("[inputActionEvent] PrimaryHandTriggerDown");
+                    if (primaryHandTriggerDownActions != null && primaryHandTriggerDownActions.Length > 0)
+                        foreach (var action in primaryHandTriggerDownActions)
                         {
                             if (action)
                                 action.OnEvent();
@@ -48,10 +62,21 @@ namespace PJ_PHOBIA
                         }
                     if (onlyOnce) col.enabled = false;
                     break ;
-                case InputButton.SecondaryIndexTrigger:
-                    Debug.Log("[inputActionEvent] SecondaryIndexTrigger");
-                    if (secondaryIndexTriggerActions != null && secondaryIndexTriggerActions.Length > 0)
-                        foreach (var action in secondaryIndexTriggerActions)
+                case InputButton.PrimaryHandTriggerUp:
+                    Debug.Log("[inputActionEvent] PrimaryHandTriggerUp");
+                    if (primaryHandTriggerUpActions != null && primaryHandTriggerUpActions.Length > 0)
+                        foreach (var action in primaryHandTriggerUpActions)
+                        {
+                            if (action)
+                                action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
+                    if (onlyOnce) col.enabled = false;
+                    break;
+                case InputButton.SecondaryIndexTriggerDown:
+                    Debug.Log("[inputActionEvent] SecondaryIndexTriggerDown");
+                    if (secondaryIndexTriggerDownActions != null && secondaryIndexTriggerDownActions.Length > 0)
+                        foreach (var action in secondaryIndexTriggerDownActions)
                         {
                             if (action)
                                 action.OnEvent();
@@ -59,10 +84,32 @@ namespace PJ_PHOBIA
                         }
                     if (onlyOnce) col.enabled = false;
                     break ;
-                case InputButton.SecondaryHandTrigger:
-                    Debug.Log("[inputActionEvent] SecondaryHandTrigger");
-                    if (secondaryHandTriggerActions != null && secondaryHandTriggerActions.Length > 0)
-                        foreach (var action in secondaryHandTriggerActions)
+                case InputButton.SecondaryIndexTriggerUp:
+                    Debug.Log("[inputActionEvent] SecondaryIndexTriggerUp");
+                    if (secondaryIndexTriggerUpActions != null && secondaryIndexTriggerUpActions.Length > 0)
+                        foreach (var action in secondaryIndexTriggerUpActions)
+                        {
+                            if (action)
+                                action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
+                    if (onlyOnce) col.enabled = false;
+                    break;
+                case InputButton.SecondaryHandTriggerDown:
+                    Debug.Log("[inputActionEvent] SecondaryHandTriggerDown");
+                    if (secondaryHandTriggerDownActions != null && secondaryHandTriggerDownActions.Length > 0)
+                        foreach (var action in secondaryHandTriggerDownActions)
+                        {
+                            if (action)
+                                action.OnEvent();
+                            action?.OnInputAction(state);
+                        }
+                    if (onlyOnce) col.enabled = false;
+                    break;
+                case InputButton.SecondaryHandTriggerUp:
+                    Debug.Log("[inputActionEvent] SecondaryHandTriggerUp");
+                    if (secondaryHandTriggerUpActions != null && secondaryHandTriggerUpActions.Length > 0)
+                        foreach (var action in secondaryHandTriggerUpActions)
                         {
                             if (action)
                                 action.OnEvent();
