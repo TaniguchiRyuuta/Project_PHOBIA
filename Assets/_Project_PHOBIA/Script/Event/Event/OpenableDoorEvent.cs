@@ -6,20 +6,33 @@ namespace PJ_PHOBIA
 {
     public class OpenableDoorEvent : EventBehaviour
     {
+        [SerializeField] private Transform pivot;
         [SerializeField] private Transform target;
         [SerializeField] private Transform startPos;
         [SerializeField] private Transform endPos;
-        private float posDistance;
         private Transform player = null;
+
+        private Vector3 start;
+        private Vector3 direction;
+        private float length;
 
         [SerializeField] private bool isOpen = false;
 
         private void Awake()
         {
-            posDistance = (startPos.position - endPos.position).magnitude;
+            start = startPos.localPosition;
+
+            var end = endPos.localPosition;
+
+            var startToEnd = end - start;
+
+            length = startToEnd.magnitude;
+
+            direction = startToEnd.normalized;
         }
         public override void OnInputAction(InputButton state)
         {
+            Debug.Log("[OpenableDoorEvent] InputAction");
             if(state == InputButton.PrimaryHandTriggerDown ||
                state == InputButton.SecondaryHandTriggerDown)
             {
@@ -29,28 +42,34 @@ namespace PJ_PHOBIA
                     state == InputButton.SecondaryHandTriggerUp)
             {
                 if (isOpen) { isOpen = false; Debug.Log("[OpenableDoorEvent] isOpen:false"); }
-                player = null;
             }
         }
 
         private void Update()
         {
-            if (!isOpen) return;
             OpenDoor();
-            
         }
         
         private void OpenDoor()
         {
+
             Debug.Log("[OpenableDoorEvent] OpenDoor:stop");
+
             if (player == null) return;
+            if(!isOpen) return;
             Debug.Log("[OpenableDoorEvent] OpenDoor:start");
-            if (target.position.x <= posDistance && target.position.x >= startPos.position.x)
-            {
-                var dis = (player.position - startPos.position).magnitude;
-                var pos = target.position.x - dis;
-                target.position = new Vector3(dis,target.position.y,target.position.z);
-            }
+
+            var playerLocalPos = pivot.InverseTransformPoint(player.position);
+
+            var startToPlayer = playerLocalPos - start;
+
+            var distanceAlongAxis = Vector3.Dot(startToPlayer, direction);
+
+            distanceAlongAxis = Mathf.Clamp(distanceAlongAxis, 0f, length);
+
+            float t = distanceAlongAxis/length;
+            
+            target.localPosition = Vector3.Lerp(startPos.localPosition, endPos.localPosition, t);
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -58,6 +77,14 @@ namespace PJ_PHOBIA
             {
                 Debug.Log("[OpenableDoorEvent] player");
                     player = other.gameObject.GetComponent<Transform>();
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+            {
+                player = null;
+                isOpen = false;
             }
         }
     }

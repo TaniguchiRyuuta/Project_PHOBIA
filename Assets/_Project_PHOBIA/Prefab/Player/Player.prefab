@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: d76c0940-cea2-4535-9a40-33684f4c7967
+  instanceId: 1f213bff-e810-41c9-b48f-e2436a74b3dd
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -1018,7 +1018,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IM: {fileID: 2488431161787060933}
-  previousID: 0
 --- !u!114 &2488431161787060933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1607,9 @@ MonoBehaviour:
   headTransform: {fileID: 7647112420324080825}
   walkClip: {fileID: 8300000, guid: 3ff530dd717111440adf3c5b26d6fa15, type: 3}
   footstepVolume: 1
+  _isGameStart: 0
+  _isFinishTutorial: 0
+  isDebug: 0
 --- !u!114 &1751845953286109278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,13 +1635,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688ff654cc085cd4eb82cd5f106f0a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryIndexTriggerActions:
+  primaryIndexTriggerDownActions: []
+  primaryIndexTriggerUpActions: []
+  primaryHandTriggerDownActions:
   - {fileID: 1597368798533128980}
-  primaryHandTriggerActions:
+  primaryHandTriggerUpActions:
   - {fileID: 1597368798533128980}
-  secondaryIndexTriggerActions:
+  secondaryIndexTriggerDownActions:
   - {fileID: 8786701354165396131}
-  secondaryHandTriggerActions: []
+  secondaryIndexTriggerUpActions: []
+  secondaryHandTriggerDownActions:
+  - {fileID: 811786522531705207}
+  secondaryHandTriggerUpActions:
+  - {fileID: 811786522531705207}
   aButtonActions:
   - {fileID: 3720113998411494692}
   bButtonActions:
