@@ -15,6 +15,7 @@ namespace PJ_PHOBIA
                 Debug.LogError("[SoudEffectEvent] SourceまたはClipがアタッチされていません");
                 return;
             }
+            Debug.Log("[SoundEffectEvent] PlayOneShot");
             source.PlayOneShot(clip);
         }
     }
