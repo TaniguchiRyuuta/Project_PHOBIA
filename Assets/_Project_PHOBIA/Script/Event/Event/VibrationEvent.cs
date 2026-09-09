@@ -14,18 +14,26 @@ namespace PJ_PHOBIA
         public override void OnEvent()
         {
             player = new HapticClipPlayer(clip);
-            OnVibreation();
+            OnVibreation(vibPoint);
         }
         public override void OnInputAction(InputButton state)
         {
-            if (InputButton.PrimaryIndexTriggerDown != state ||
-                InputButton.PrimaryHandTriggerDown != state) return;
-            player.Play(Controller.Left);
+            switch (state)
+            {
+                case InputButton.PrimaryHandTriggerDown:
+                    OnVibreation(VibrationPoint.Left);
+                    break;
+                case InputButton.SecondaryHandTriggerDown:
+                    OnVibreation(VibrationPoint.Right);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void OnVibreation()
+        private void OnVibreation(VibrationPoint hand)
         {
-            switch(vibPoint)
+            switch(hand)
             {
                 case VibrationPoint.Both:
                     player.Play(Controller.Both); 

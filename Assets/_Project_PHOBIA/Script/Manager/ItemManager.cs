@@ -15,6 +15,7 @@ namespace PJ_PHOBIA
         {
             itemList = new List<GameObject>();
             itemList.Add(Items[(int)ItemData.Hand]);
+            itemList.Add(Items[(int)ItemData.FlashLight]);
         }
         public void AddItem(int ID)
         {
