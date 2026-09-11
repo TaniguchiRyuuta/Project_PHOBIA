@@ -9,15 +9,20 @@ namespace PJ_PHOBIA
     {
         [SerializeField] private HapticClip clip;
         [SerializeField] private VibrationPoint vibPoint;
+        [SerializeField] private bool isInputAction = false;
         private HapticClipPlayer player;
 
         public override void OnEvent()
         {
+            if (isInputAction) return;
             player = new HapticClipPlayer(clip);
             OnVibreation(vibPoint);
         }
         public override void OnInputAction(InputButton state)
         {
+            if(!isInputAction) return;
+            player = new HapticClipPlayer(clip);
+            Debug.Log("[VibrationEvent] InputAction");
             switch (state)
             {
                 case InputButton.PrimaryHandTriggerDown:
