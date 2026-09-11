@@ -21,6 +21,7 @@ namespace PJ_PHOBIA
         public override void OnInputAction(InputButton state)
         {
             if(!isInputAction) return;
+            player = new HapticClipPlayer(clip);
             Debug.Log("[VibrationEvent] InputAction");
             switch (state)
             {

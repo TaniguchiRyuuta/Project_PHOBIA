@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 2460798210113038985, guid: bb23c001181d7d64a8635d64957719b8, type: 3}
   vibPoint: 0
+  isInputAction: 1
 --- !u!1 &2748531209883678639
 GameObject:
   m_ObjectHideFlags: 0
