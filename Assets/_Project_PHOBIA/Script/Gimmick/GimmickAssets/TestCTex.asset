@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee56eadc5be137469ba5478d8557fd5, type: 3}
   m_Name: TestCTex
   m_EditorClassIdentifier: 
-  hMaterial: {fileID: 2100000, guid: 7d62cbe2a927d9a4eb8f86c58e461e99, type: 2}
+  _hMaterial: {fileID: 2100000, guid: 7d62cbe2a927d9a4eb8f86c58e461e99, type: 2}
