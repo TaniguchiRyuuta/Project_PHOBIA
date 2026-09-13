@@ -29,6 +29,11 @@ namespace PJ_PHOBIA
             
         }
 
+        public bool ContainsItem(ItemData ID)
+        {
+            return itemList.Contains(Items[(int)ID]);
+        }
+
         public int GetItemListCount()
         {
             return itemList.Count;
