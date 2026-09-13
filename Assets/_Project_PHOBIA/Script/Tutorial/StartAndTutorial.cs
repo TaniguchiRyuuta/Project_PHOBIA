@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StartAndTutorial : MonoBehaviour
+public class StartAndTutorial : EventBehaviour
 {
     //チュートリアル時に表示する説明テキストUI
     [SerializeField] TextMeshPro _title;
@@ -19,7 +19,7 @@ public class StartAndTutorial : MonoBehaviour
 
     private bool _isStartTutorial;  //チュートリアルスタート実行可能フラグ
     private bool _isMoveTutorial;   //移動チュートリアル実行可能フラグ
-    private bool _isActionTutorial; //アクションチュートリアル実行可能フラグ
+    public bool _isActionTutorial; //アクションチュートリアルs実行可能フラグ
     private bool _isforgotText;
     private bool _isRotateTutorial; //カメラローテートチュートリアル実行可能フラグ
 
@@ -27,7 +27,6 @@ public class StartAndTutorial : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(StartTutorial());
         _isStartTutorial = false;
         _isMoveTutorial = false;
         _isActionTutorial = false;
@@ -43,11 +42,10 @@ public class StartAndTutorial : MonoBehaviour
         {
             if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
-                StartCoroutine(StartTutorial());
-                _flag._isGameStart = true;
                 _isStartTutorial = true;
-                _isMoveTutorial= true;   //移動チュートリアル開始
-                Debug.Log("移動チュートリアル開始");
+                StartCoroutine(StartTutorial());
+                
+                
             }
         }
 
@@ -63,20 +61,11 @@ public class StartAndTutorial : MonoBehaviour
             }
         }
 
-        //インタラクトアクションのチュートリアル
+        //インタラクトアクションのチュートリアルコライダーでtrueにする
         if (_isActionTutorial)
         {
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
-            {
-                //ドアに手にかけた時に表示する、落し物あるから取りに帰ろうテキストの表示
-                if (!_isforgotText)
-                {
-                    StartCoroutine(FadeOutText(_actionText));
-                    StartCoroutine(FadeInText(_forgotText));
-                    StartCoroutine(WaitFadeText());
-                    _isRotateTutorial = true;  //カメラローテートチュートリアル開始
-                }  
-            }
+            StartCoroutine(FadeInText(_actionText));
+            _isActionTutorial = false;
         }
 
         //カメラローテートチュートリアル
@@ -92,17 +81,21 @@ public class StartAndTutorial : MonoBehaviour
         }
     }
 
-    //door前チュートリアルテキスト表示
-    private void OnTriggerEnter(Collider other)
+
+    public override void OnInputAction(InputButton state)
     {
-        Debug.Log("コライダーイン！");
-        //Playerじゃなかったらreturn
-        if (!other.CompareTag("Player"))
+        if (state == InputButton.PrimaryHandTriggerDown ||  state == InputButton.SecondaryHandTriggerDown)
         {
-            return;
+            //ドアに手にかけた時に表示する、落し物あるから取りに帰ろうテキストの表示
+            if (!_isforgotText)
+            {
+                StartCoroutine(FadeOutText(_actionText));
+                StartCoroutine(FadeInText(_forgotText));
+                StartCoroutine(WaitFadeForgotText());
+                _isRotateTutorial = true;  //カメラローテートチュートリアル開始
+            }
         }
-        StartCoroutine(FadeInText(_actionText));
-        _isActionTutorial = true;　　//インタラクトアクションのチュートリアル開始
+        
     }
 
     //ゲーム開始直後用コルーチン  いらなければ全部そのまま書く　　（移動チュートリアルテキストの表示までの処理）
@@ -111,15 +104,20 @@ public class StartAndTutorial : MonoBehaviour
         StartCoroutine(FadeOutText(_title));
         StartCoroutine(FadeOutText(_title2));
         yield return FadeOutText(_lightText);
-        StartCoroutine(FadeInText(_moveText));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(FadeInText(_moveText));
+        _isMoveTutorial = true;                               //移動チュートリアル開始
+        _flag._isGameStart = true;
     }
 
-    IEnumerator WaitFadeText()
+    //_forgotTextの表示時間経過後、自動フェードアウト用
+    IEnumerator WaitFadeForgotText()
     {
         yield return new WaitForSeconds(_waitTime);
-        StartCoroutine(FadeOutText(_forgotText));
+        yield return StartCoroutine(FadeOutText(_forgotText));
         StartCoroutine(FadeInText(_rotateText));
     }
+
     //チュートリアルテキストのフェードイン用コルーチン（引数はフェードさせるTextMeshPro　※UGUI×）
     IEnumerator FadeInText(TextMeshPro alpha)
     {
