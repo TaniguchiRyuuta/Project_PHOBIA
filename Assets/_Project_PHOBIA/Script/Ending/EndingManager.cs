@@ -9,7 +9,8 @@ public class EndingManager : EventBehaviour
 {
     [SerializeField] GameObject _creditText; //クレジット表記
     [SerializeField] Collider _endCol;
-    public bool isGameClear { get; private set; }
+    [SerializeField]
+    public bool isGameClear;//{ get; private set; }
     
     void Start()
     {
@@ -20,6 +21,7 @@ public class EndingManager : EventBehaviour
 
     public void GameClear()
     {
+        Debug.Log("フラグ変更");
         isGameClear = true;
         _creditText.SetActive(true);
         _endCol.enabled = true;

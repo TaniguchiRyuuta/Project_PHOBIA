@@ -10,10 +10,11 @@ namespace PJ_PHOBIA
         [SerializeField] EndingManager _clearFlag; //エンディング用のboolを参照
         public override void OnEvent()
         {
-            if(IM.ContainsItem(ItemData.Phone)&&IM.ContainsItem(ItemData.Key))
+            Debug.Log("こっちは外");
+            if (IM.ContainsItem(ItemData.Phone)&&IM.ContainsItem(ItemData.Key))
             {
                 Debug.Log("ゲームクリア");
-                //_clearFlag.GameClear();
+                _clearFlag.GameClear();
             }
         }
     }
