@@ -10,7 +10,11 @@ namespace PJ_PHOBIA
         public override void OnEvent()
         {
             if (target == null) return;
-            
+            if(target.enabled == false) 
+            {
+                target = null;
+                return;
+            } 
             target.gameObject.GetComponent<EventBehaviour>()?.OnEvent();
         }
 
@@ -18,6 +22,11 @@ namespace PJ_PHOBIA
         {
             Debug.Log("[InvokeInteractableObjectEvent] target:" + target);
             if (target == null) return;
+            if (target.enabled == false)
+            {
+                target = null;
+                return;
+            }
             Debug.Log("[InvokeInteractableObjectEvent] OnInputAction:"+state);
             target.gameObject.GetComponent<EventBehaviour>()?.OnInputAction(state);
         }
