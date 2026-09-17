@@ -13500,6 +13500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3219651147739152601, guid: 58d94558dff09eb4aabd1a41ac2173ac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6565451892812383492, guid: 58d94558dff09eb4aabd1a41ac2173ac,
         type: 3}
       propertyPath: _flag
