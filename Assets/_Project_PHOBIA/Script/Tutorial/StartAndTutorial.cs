@@ -12,6 +12,7 @@ public class StartAndTutorial : EventBehaviour
     [SerializeField] TextMeshPro _lightText;
     [SerializeField] TextMeshPro _moveText;
     [SerializeField] TextMeshPro _actionText;
+    [SerializeField] TextMeshPro _itemChangeText;
     [SerializeField] TextMeshPro _forgotText;
     [SerializeField] TextMeshPro _rotateText;
     [SerializeField] float _fadeTime;
@@ -22,6 +23,7 @@ public class StartAndTutorial : EventBehaviour
     public bool _isActionTutorial; //アクションチュートリアルs実行可能フラグ
     private bool _isforgotText;
     private bool _isRotateTutorial; //カメラローテートチュートリアル実行可能フラグ
+    private bool _isFinishTutorial;
 
     [SerializeField] private float _waitTime = 4f;
 
@@ -32,6 +34,7 @@ public class StartAndTutorial : EventBehaviour
         _isActionTutorial = false;
         _isforgotText = false;
         _isRotateTutorial = false;
+        _isFinishTutorial = false;
     }
 
     // Update is called once per frame
@@ -61,11 +64,15 @@ public class StartAndTutorial : EventBehaviour
             }
         }
 
-        //インタラクトアクションのチュートリアルコライダーでtrueにする
+        //インタラクトアクションのチュートリアル コライダーでtrueにする
         if (_isActionTutorial)
         {
-            StartCoroutine(FadeInText(_actionText));
-            _isActionTutorial = false;
+            StartCoroutine(FadeInText(_itemChangeText));
+            if(OVRInput.GetDown(OVRInput.RawButton.A) || OVRInput.GetDown(OVRInput.RawButton.B))
+            {
+                StartCoroutine(WaitFadeOut(_itemChangeText, _actionText));
+                _isActionTutorial = false;
+            }
         }
 
         //カメラローテートチュートリアル
@@ -75,9 +82,14 @@ public class StartAndTutorial : EventBehaviour
             var secondInput = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
             if (secondInput.x < 0 || secondInput.x > 0)
             {
-                StartCoroutine(FadeOutText(_rotateText));
+                StartCoroutine(WaitDestroy(_rotateText));
                 _isRotateTutorial= false;
             }
+        }
+
+        if (_isFinishTutorial)
+        {
+            Destroy(this.gameObject);
         }
     }
 
@@ -117,7 +129,16 @@ public class StartAndTutorial : EventBehaviour
         yield return StartCoroutine(FadeOutText(_forgotText));
         StartCoroutine(FadeInText(_rotateText));
     }
-
+    IEnumerator WaitFadeOut(TextMeshPro fadeOut, TextMeshPro fadeIn)
+    {
+        yield return StartCoroutine(FadeOutText(fadeOut));
+        StartCoroutine(FadeInText(fadeIn));
+    }
+    IEnumerator WaitDestroy(TextMeshPro waitText)
+    {
+        yield return StartCoroutine(FadeOutText(waitText));
+        _isFinishTutorial = true;
+    }
     //チュートリアルテキストのフェードイン用コルーチン（引数はフェードさせるTextMeshPro　※UGUI×）
     IEnumerator FadeInText(TextMeshPro alpha)
     {
