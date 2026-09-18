@@ -78,12 +78,12 @@ public class StartAndTutorial : EventBehaviour
         //カメラローテートチュートリアル
         if (_isRotateTutorial)
         {
-            _flag._isFinishTutorial = true;
             var secondInput = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
             if (secondInput.x < 0 || secondInput.x > 0)
             {
                 StartCoroutine(WaitDestroy(_rotateText));
                 _isRotateTutorial= false;
+                _flag._isFinishTutorial = true;
             }
         }
 
@@ -104,7 +104,6 @@ public class StartAndTutorial : EventBehaviour
                 StartCoroutine(FadeOutText(_actionText));
                 StartCoroutine(FadeInText(_forgotText));
                 StartCoroutine(WaitFadeForgotText());
-                _isRotateTutorial = true;  //カメラローテートチュートリアル開始
             }
         }
         
@@ -128,6 +127,7 @@ public class StartAndTutorial : EventBehaviour
         yield return new WaitForSeconds(_waitTime);
         yield return StartCoroutine(FadeOutText(_forgotText));
         StartCoroutine(FadeInText(_rotateText));
+        _isRotateTutorial = true;  //カメラローテートチュートリアル開始
     }
     IEnumerator WaitFadeOut(TextMeshPro fadeOut, TextMeshPro fadeIn)
     {
