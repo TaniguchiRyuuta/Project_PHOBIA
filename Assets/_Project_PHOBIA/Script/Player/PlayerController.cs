@@ -15,11 +15,14 @@ namespace PJ_PHOBIA
 
         [Header("カメラ回転設定")]
         [SerializeField] private float snapAngle = 45f;       // 1回の回転角度
+        private float snapValue = 0f; 
         [SerializeField] private float inputThreshold = 0.7f; // スティック入力の閾値
         [SerializeField] private Transform cameraRig;         // OVRCameraRig をアサイン
 
         [SerializeField, Header("参照（CenterEyeAnchor）")]
         private Transform headTransform;
+        [SerializeField] Transform _player;
+
 
         [Header("足音")]
         [SerializeField] private AudioClip walkClip;
@@ -143,12 +146,19 @@ namespace PJ_PHOBIA
 
         private void PerformSnapTurn(float angle)
         {
-            if (cameraRig == null) return;
+            var pivot = _player.transform.rotation.y;
 
-            Transform centerEye = cameraRig.GetComponentInChildren<Camera>()?.transform; // カメラ（頭）の位置を軸に回転させる
-            Vector3 pivotPoint = centerEye != null ? centerEye.position : cameraRig.position;
+            snapValue += angle;
 
-            cameraRig.RotateAround(pivotPoint, Vector3.up, angle);
+            pivot = snapValue;
+
+            _player.rotation = Quaternion.Euler(0,pivot, 0);
+            //if (cameraRig == null) return;
+
+            
+            //Vector3 pivotPoint = centerEye != null ? centerEye.position : cameraRig.position;
+
+            //cameraRig.RotateAround(pivotPoint, Vector3.up, angle);
         }
     }
 }
