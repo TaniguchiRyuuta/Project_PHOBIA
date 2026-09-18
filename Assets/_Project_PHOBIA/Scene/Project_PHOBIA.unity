@@ -2310,7 +2310,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clip
       value: 
-      objectReference: {fileID: 8300000, guid: 05f4c156212816c47b42e25a808cb2b9, type: 3}
+      objectReference: {fileID: 8300000, guid: cec0b0701393ed343b9babb9b4f171c6, type: 3}
     - target: {fileID: 4847711239462537223, guid: ee8051e28ee16fe47985b2f1a5f51af1,
         type: 3}
       propertyPath: m_Name
@@ -2331,6 +2331,11 @@ PrefabInstance:
       propertyPath: IM
       value: 
       objectReference: {fileID: 1015952389}
+    - target: {fileID: 8368957708405392716, guid: ee8051e28ee16fe47985b2f1a5f51af1,
+        type: 3}
+      propertyPath: _clearFlag
+      value: 
+      objectReference: {fileID: 602760593}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5260546867717629048, guid: ee8051e28ee16fe47985b2f1a5f51af1, type: 3}
@@ -4235,6 +4240,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594210393}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &602760593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4390603899895565040, guid: 5d7d3608b3746404fafecf81dfa5d268,
+    type: 3}
+  m_PrefabInstance: {fileID: 522171567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa2f33b09e0a4e4e83fb0a763bfdccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &627753608
 GameObject:
   m_ObjectHideFlags: 0
@@ -9298,7 +9315,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clip
       value: 
-      objectReference: {fileID: 8300000, guid: 50c63af566dd56e419b013a6b4234c73, type: 3}
+      objectReference: {fileID: 8300000, guid: 52ccd77d1c656b541ac46fb637c9f7bc, type: 3}
     - target: {fileID: 4847711239462537223, guid: ee8051e28ee16fe47985b2f1a5f51af1,
         type: 3}
       propertyPath: m_Name
@@ -9319,6 +9336,11 @@ PrefabInstance:
       propertyPath: IM
       value: 
       objectReference: {fileID: 1015952389}
+    - target: {fileID: 8368957708405392716, guid: ee8051e28ee16fe47985b2f1a5f51af1,
+        type: 3}
+      propertyPath: _clearFlag
+      value: 
+      objectReference: {fileID: 602760593}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21711,6 +21733,11 @@ PrefabInstance:
       propertyPath: isDebug
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6052346240633068234, guid: a0b5cd03535dad74cba2e2c2a003c7b4,
+        type: 3}
+      propertyPath: walkClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 25b7141d9fc499641ba06a8a5fd62897, type: 3}
     - target: {fileID: 8147374824876989010, guid: a0b5cd03535dad74cba2e2c2a003c7b4,
         type: 3}
       propertyPath: m_Name
