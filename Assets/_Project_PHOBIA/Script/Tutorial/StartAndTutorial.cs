@@ -15,6 +15,7 @@ public class StartAndTutorial : EventBehaviour
     [SerializeField] TextMeshPro _itemChangeText;
     [SerializeField] TextMeshPro _forgotText;
     [SerializeField] TextMeshPro _rotateText;
+    [SerializeField] GameObject _doorPointLight;
     [SerializeField] float _fadeTime;
     [SerializeField] PlayerController _flag;  //PlayerController側のフラグ
 
@@ -23,7 +24,6 @@ public class StartAndTutorial : EventBehaviour
     public bool _isActionTutorial; //アクションチュートリアルs実行可能フラグ
     private bool _isforgotText;
     private bool _isRotateTutorial; //カメラローテートチュートリアル実行可能フラグ
-    private bool _isFinishTutorial;
 
     [SerializeField] private float _waitTime = 4f;
 
@@ -34,7 +34,7 @@ public class StartAndTutorial : EventBehaviour
         _isActionTutorial = false;
         _isforgotText = false;
         _isRotateTutorial = false;
-        _isFinishTutorial = false;
+        _doorPointLight.SetActive(false);
     }
 
     // Update is called once per frame
@@ -70,6 +70,7 @@ public class StartAndTutorial : EventBehaviour
             StartCoroutine(FadeInText(_itemChangeText));
             if(OVRInput.GetDown(OVRInput.RawButton.A) || OVRInput.GetDown(OVRInput.RawButton.B))
             {
+                _doorPointLight.SetActive(true);
                 StartCoroutine(WaitFadeOut(_itemChangeText, _actionText));
                 _isActionTutorial = false;
             }
@@ -83,11 +84,10 @@ public class StartAndTutorial : EventBehaviour
             {
                 StartCoroutine(WaitDestroy(_rotateText));
                 _isRotateTutorial= false;
-                _flag._isFinishTutorial = true;
             }
         }
 
-        if (_isFinishTutorial)
+        if (_flag._isFinishTutorial)
         {
             Destroy(this.gameObject);
         }
@@ -101,6 +101,7 @@ public class StartAndTutorial : EventBehaviour
             //ドアに手にかけた時に表示する、落し物あるから取りに帰ろうテキストの表示
             if (!_isforgotText)
             {
+                _doorPointLight.SetActive(false);
                 StartCoroutine(FadeOutText(_actionText));
                 StartCoroutine(FadeInText(_forgotText));
                 StartCoroutine(WaitFadeForgotText());
@@ -137,7 +138,7 @@ public class StartAndTutorial : EventBehaviour
     IEnumerator WaitDestroy(TextMeshPro waitText)
     {
         yield return StartCoroutine(FadeOutText(waitText));
-        _isFinishTutorial = true;
+        _flag._isFinishTutorial = true;
     }
     //チュートリアルテキストのフェードイン用コルーチン（引数はフェードさせるTextMeshPro　※UGUI×）
     IEnumerator FadeInText(TextMeshPro alpha)
