@@ -8,6 +8,11 @@ public class BlockExit : MonoBehaviour
     [SerializeField] GameObject _blockEventWall;
     [SerializeField] PlayerController _tutoFlag;
     private bool _doOnce;
+
+    private void Start()
+    {
+        _doOnce = true;
+    }
     private void OnTriggerExit(Collider other)
     {
         //ÉvÉåÉCÉÑÅ[Ç∂Ç·Ç»Ç©Ç¡ÇΩÇÁreturn

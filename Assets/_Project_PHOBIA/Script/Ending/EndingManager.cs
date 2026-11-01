@@ -17,6 +17,7 @@ public class EndingManager : EventBehaviour
     [SerializeField] float _fadeTime;             //テキストのフェード時間
     [SerializeField] OVRScreenFade _screenFade;   //OVRScreenFadeコンポーネント
     [SerializeField] float _fadeDuration;         //ScreenFadeを待つ時間
+    [SerializeField] GameObject _gimWall;         //Gimmickの壁
     public bool isGameClear { get; private set; }
 
     
@@ -36,6 +37,7 @@ public class EndingManager : EventBehaviour
         isGameClear = true;
         _creditText.SetActive(true);
         _endCol.enabled = true;
+        _gimWall.SetActive(false);
     }
 
     //帰ろうテキストの表示

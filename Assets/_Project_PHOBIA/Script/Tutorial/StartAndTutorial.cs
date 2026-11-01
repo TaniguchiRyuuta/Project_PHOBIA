@@ -70,6 +70,7 @@ public class StartAndTutorial : EventBehaviour
             StartCoroutine(FadeInText(_itemChangeText));
             if(OVRInput.GetDown(OVRInput.RawButton.A) || OVRInput.GetDown(OVRInput.RawButton.B))
             {
+                Debug.Log("A,B‰Ÿ‚µ‚½");
                 _doorPointLight.SetActive(true);
                 StartCoroutine(WaitFadeOut(_itemChangeText, _actionText));
                 _isActionTutorial = false;
