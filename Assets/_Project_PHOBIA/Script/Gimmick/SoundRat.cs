@@ -5,10 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Gimmick<SoundRat>")]
 public class SoundRat : HorrorGimmicks
 {
-    [SerializeField]
-    AudioSource source;
-    [SerializeField]
-    AudioClip clip1;
+    private AudioSource source;
+    [SerializeField] AudioClip clip1;
     public override void Activate(GameObject trigger)
     {
         source = trigger.GetComponentInChildren<AudioSource>(); //Žq‚É‚Â‚¢‚Ä‚éAudioSourceŽæ“¾
