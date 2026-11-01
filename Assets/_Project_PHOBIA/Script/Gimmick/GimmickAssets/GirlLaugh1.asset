@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c63a90f20c62bf4ead87fefb7814c51, type: 3}
-  m_Name: TestRat
+  m_Script: {fileID: 11500000, guid: 08b7377c486035943a815ab6b8a4afab, type: 3}
+  m_Name: GirlLaugh1
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
-  clip1: {fileID: 8300000, guid: a95b2d7d4ee1049488973d916e6b9de4, type: 3}
+  _clip: {fileID: 8300000, guid: 83ef860a452caab44acf9b7d051254af, type: 3}

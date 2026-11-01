@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class RatDelay : MonoBehaviour
 {
-    [SerializeField]
     AudioSource _source;
-    [SerializeField]
-    AudioClip _clip2;
+    [SerializeField] AudioClip _clip2;
 
     private void Start()
     {
