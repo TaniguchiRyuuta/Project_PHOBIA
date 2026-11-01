@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Gimmick<PlayHorrorSE>")]
 public class PlaySound : HorrorGimmicks
 {
-    [SerializeField]
     private AudioSource _source;
 
     [SerializeField]
